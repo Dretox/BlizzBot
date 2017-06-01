@@ -91,6 +91,7 @@ exports.run = (client, message, args) => {
             .setThumbnail(`http://render-api-${region}.worldofwarcraft.com/static-render/${region}/${respuesta.thumbnail}`)
             .addField(`${respuesta.name}, level ${respuesta.level} ${respuesta.race} ${respuesta.class}`, `[Armory page.](https://worldofwarcraft.com/character/${server}/${name})`)
             .addField('Equipped ilvl:', respuesta.items.averageItemLevelEquipped, true)
+            .addField('Achievement Points:', respuesta.achievementPoints, true)
             .addField('Faction:', respuesta.faction, true)
             .addField('Guild:', guildname, true)
 
