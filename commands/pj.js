@@ -44,9 +44,9 @@ exports.run = (client, message, args) => {
         ['profile', 'guild', 'items'],
         { origin: region, realm: server, name }
     ).then(response => {
+        let respuesta = response.data;
         let color;
         let guildname;
-        let respuesta = response.data;
         // class is a reserved keyword in JavaScript
         const [clss, race] = [ respuesta.class, respuesta.race ];
     
@@ -96,5 +96,10 @@ exports.run = (client, message, args) => {
             .addField('Guild:', guildname, true)
 
         message.channel.send({embed});
+    })
+    .catch(error => {
+        const nameErr = `${args[0]} not found in Armory`;
+        console.log(nameErr);
+        message.channel.send(nameErr);
     });
 };
