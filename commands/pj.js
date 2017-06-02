@@ -98,8 +98,7 @@ exports.run = (client, message, args) => {
         message.channel.send({embed});
     })
     .catch(error => {
-        const nameErr = `${args[0]} not found in Armory`;
-        console.log(nameErr);
-        message.channel.send(nameErr);
+        console.log(error);
+        message.channel.send(`${args[0]} not found in Armory`);
     });
 };
