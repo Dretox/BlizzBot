@@ -52,7 +52,7 @@ exports.run = (client, message, args) => {
             .addField('Faction:', respuestaGuild.side, true)
             .addField('Guild Master:', `${guildMaster} ([Armory page](https://worldofwarcraft.com/character/${realm}/${guildMaster}))`, true);
 
-            message.channel.send({embed});
+        message.channel.send({embed});
     })
     .catch(error => {
         console.log(error);

@@ -8,7 +8,7 @@ exports.run = (client, message, args) => {
       return;
     };
 
-    const [name, server, region] = args;
+    const [name, realm, origin] = args;
     const classes = {
         1: 'Warrior',
         2: 'Paladin',
@@ -42,7 +42,7 @@ exports.run = (client, message, args) => {
 
     blizzard.wow.character(
         ['profile', 'guild', 'items'],
-        { origin: region, realm: server, name }
+        { name, realm, origin }
     ).then(response => {
         let respuesta = response.data;
         let color;
@@ -88,8 +88,8 @@ exports.run = (client, message, args) => {
 
         const embed = new Discord.RichEmbed()
             .setColor(color)
-            .setThumbnail(`http://render-api-${region}.worldofwarcraft.com/static-render/${region}/${respuesta.thumbnail}`)
-            .addField(`${respuesta.name}, level ${respuesta.level} ${respuesta.race} ${respuesta.class}`, `[Armory page.](https://worldofwarcraft.com/character/${server}/${name})`)
+            .setThumbnail(`http://render-api-${origin}.worldofwarcraft.com/static-render/${origin}/${respuesta.thumbnail}`)
+            .addField(`${respuesta.name}, level ${respuesta.level} ${respuesta.race} ${respuesta.class}`, `[Armory page.](https://worldofwarcraft.com/character/${realm}/${name})`)
             .addField('Equipped ilvl:', respuesta.items.averageItemLevelEquipped, true)
             .addField('Achievement Points:', respuesta.achievementPoints, true)
             .addField('Faction:', respuesta.faction, true)
